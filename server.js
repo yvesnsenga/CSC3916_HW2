@@ -31,7 +31,7 @@ function getJSONObject(req) {
     return json;
 }
 
-router.route('/post')
+router.route('/postjwt')
     .post(authController.isAuthenticated, function (req, res) {
             console.log(req.body);
             res = res.status(200);
@@ -81,7 +81,7 @@ router.post('/signin', function(req, res) {
         // check if password matches
         if (req.body.password == user.password)  {
             var userToken = { id : user.id, username: user.username };
-            var token = jwt.sign(userToken, process.env.SECRET_KEY);
+            var token = jwt.sign(userToken, process.env.UNIQUE_KEY);
             res.json({success: true, token: 'JWT ' + token});
         }
         else {
