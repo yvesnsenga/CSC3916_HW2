@@ -32,7 +32,7 @@ function getJSONObject(req) {
 }
 
 router.route('/postjwt')
-    .post(authController.isAuthenticated, function (req, res) {
+    .post(authJwtController.isAuthenticated, function (req, res) {
             console.log(req.body);
             res = res.status(200);
             if (req.get('Content-Type')) {
@@ -58,7 +58,7 @@ router.route('/movies')
 
 router.post('/signup', function(req, res) {
     if (!req.body.username || !req.body.password) {
-        res.json({success: false, msg: 'Please pass username and password.'});
+        res.json({success: false, msg: 'Please insert your username and password.'});
     } else {
         var newUser = {
             username: req.body.username,
@@ -66,7 +66,7 @@ router.post('/signup', function(req, res) {
         };
         // save the user
         db.save(newUser); //no duplicate checking
-        res.json({success: true, msg: 'Successful created new user.'});
+        res.json({success: true, msg: 'You have successful created your account.'});
     }
 });
 
