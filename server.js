@@ -117,7 +117,7 @@ router.post('/signin', function(req, res) {
         }
     }
     router.all('*', function(res, req){
-        req.json({error: 'Yves'});
+        req.json({error: 'Does not support the HTTP method'});
     });
 });
 
