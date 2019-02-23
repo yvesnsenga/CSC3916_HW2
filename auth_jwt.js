@@ -1,7 +1,7 @@
-// Load required packages
 var passport = require('passport');
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
+
 var opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
 opts.secretOrKey = process.env.UNIQUE_KEY;
