@@ -63,7 +63,7 @@ router.route('/movies')
             res = res.type(req.get('Content-Type'));
         }
         var o = getJSONObject(req);
-        res.send(JSON.stringify({status: res.statusCode, msg: "GET movie", headers: o.headers.host, body: o.body.Movie, host: o.key }));
+        res.send(JSON.stringify({status: res.statusCode, msg: "Get movie", headers: o.headers.host, body: o.body.Movie, host: o.key }));
     });
 router.route('/movies')
     .put(authJwtController.isAuthenticated, function (req, res) {
