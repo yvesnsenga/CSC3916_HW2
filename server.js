@@ -104,9 +104,14 @@ router.post('/signup', function(req, res) {
 
 router.post('/signin', function(req, res) {
 
+    var pass = db.findOne(req.body.password)
     var user = db.findOne(req.body.username);
     if (!user) {
       if (res.status(401).send({success: false, msg: 'Authentication failed. User not found.'}));
+    }
+    else if(!pass)
+    {
+        if (res.status(401).send({success: false, msg: 'Authentication failed. Invalid password.'}));
     }
     else {
         // check if password matches
