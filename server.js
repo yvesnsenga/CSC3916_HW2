@@ -105,7 +105,7 @@ router.post('/signup', function(req, res) {
 
 router.post('/signin', function(req, res) {
 
-    var pass = db.findOne(req.body.password)
+    var pass = db.findOne(req.body.password);
     var user = db.findOne(req.body.username);
     if (!user || !pass) {
       if (res.status(401).send({success: false, msg: 'Authentication failed. User not found.'}));
