@@ -4,6 +4,7 @@ var passport = require('passport');
 var authJwtController = require('./auth_jwt');
 db = require('./db')(); //global hack
 var jwt = require('jsonwebtoken');
+var authController = require('./auth');
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -77,7 +78,7 @@ router.route('/movies')
         res.send(JSON.stringify({status: res.statusCode, msg: "Movie updated", headers: o.headers.host, body: o.body.Movie, host: o.key }));
     });
 router.route('/movies')
-    .delete(authJwtController.isAuthenticated, function (req, res) {
+    .delete(authController.isAuthenticated, function (req, res) {
         console.log(req.body);
         res = res.status(200);
         if(req.get('Content-Type')){
