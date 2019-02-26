@@ -86,7 +86,7 @@ router.route('/movies')
             res = res.type(req.get('Content-Type'));
         }
         var o = getJSONObject(req);
-        res.send(JSON.stringify({status: res.statusCode, msg: "Movie deleted", headers: o.headers.host, query: o.query.Movie, host: o.key }));
+        res.send(JSON.stringify({status: res.statusCode, msg: "Movie deleted", headers: o.headers.host, query: o.query, host: o.key }));
     });
 router.post('/signup', function(req, res) {
     if (!req.body.username || !req.body.password) {
